@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Feedback – SRI RAM MOTORS</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+}
+
+.container {
+    max-width: 500px;
+    background: white;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: green;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Customer Feedback</h2>
+
+    <form onsubmit="handleFeedback(event)">
+        <input type="text" id="name" placeholder="Customer Name" required>
+        <input type="text" id="vehicle" placeholder="Vehicle Number" required>
+        <textarea id="feedback" rows="4" placeholder="Feedback about service provided" required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
+
+<script>
+function handleFeedback(e) {
+    e.preventDefault();
+
+    const feedbackText = document.getElementById("feedback").value.toLowerCase();
+
+    // simple positive check
+    const positiveWords = ["good", "excellent", "great", "nice", "satisfied", "best"];
+
+    const isPositive = positiveWords.some(word => feedbackText.includes(word));
+
+    if (isPositive) {
+        alert("Thank you! Please share your experience on Google 🙏");
+
+        // 🔴 REPLACE this URL with YOUR Google Review link
+        window.location.href =
+        "https://search.google.com/local/writereview?placeid=ChIJV9KWkz0pyzsRDZ3_oD_5RQg";
+    } else {
+        alert("Thank you for your feedback. We will improve our service.");
+    }
+}
+</script>
+
+</body>
+</html>
