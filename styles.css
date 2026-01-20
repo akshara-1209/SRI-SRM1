@@ -1215,3 +1215,98 @@ body {
     gap: 12px;                  /* tighter spacing */
   }
 }
+/* ==========================================
+   MOBILE SERVICES – AUTO ADJUST IMAGE & TEXT
+========================================== */
+@media screen and (max-width: 768px) {
+
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card {
+    min-width: 88%;
+    height: 280px;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+
+    background-size: cover !important;
+    background-position: center !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 16px;
+  }
+
+  .service-content {
+    max-height: 45%;
+  }
+
+  .service-number {
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .service-title {
+    font-size: 1rem;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+
+  .service-description {
+    font-size: 0.8rem;
+    line-height: 1.35;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+/* ==========================================
+   MOBILE FIX – FORCE TEXT WRAP & PREVENT IMAGE STRETCH
+========================================== */
+@media screen and (max-width: 768px) {
+
+  /* Ensure service cards never expand horizontally */
+  .service-card {
+    width: 100%;
+    min-width: 88%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* Allow text to wrap properly */
+  .service-title,
+  .service-description {
+    white-space: normal;          /* allow multi-line */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+
+  /* Prevent flex from forcing single line */
+  .service-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Optional: limit description lines neatly */
+  .service-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;        /* adjust if needed */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
